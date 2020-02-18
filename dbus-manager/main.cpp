@@ -1,4 +1,4 @@
-
+﻿
 
 #include <QtCore/QCoreApplication>
 #include <QtCore/QDebug>
@@ -52,6 +52,17 @@ int main(int argc, char **argv)
         else {
              qDebug() << "!!!!!!!!!!!\n System Bus connected\n!!!!!!!!!!!!!!!!!!!!!";
         }
+
+        QDBusConnection systemBus = QDBusConnection::systemBus();
+        QStringList systemServiceNames = systemBus.interface()->registeredServiceNames();
+        qDebug() << "System bus Registered Service names: " << systemServiceNames << "\n\n";
+        systemBus.QDBusConnection::~QDBusConnection();
+
+        QDBusConnection sessionBus = QDBusConnection::sessionBus();
+        QStringList serviceNames = sessionBus.interface()->registeredServiceNames();
+        qDebug() << "Session Bus Registered Service names: " << serviceNames << "\n\n";
+        sessionBus.QDBusConnection::~QDBusConnection();
+
     }
     else {
         if (!QDBusConnection::sessionBus().isConnected()) {

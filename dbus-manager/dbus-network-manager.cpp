@@ -56,6 +56,10 @@ void DBus_Network_Manager::deviceStateChanged(unsigned int newState, unsigned in
     qDebug() << "Device state changed :: " << newState << " :: " << oldState  << " :: " << reason;
 }
 
+void DBus_Network_Manager::deviceStateChanged(unsigned int newState) {
+    qDebug() << "Device state changed :: " << newState;
+}
+
 
 /******************************************************************************************
  * **************** Start of Test Function ************************************************
@@ -90,7 +94,7 @@ void networkManagerMain(void) {
 
 
         // Demo use of multiple property read
-        // Read te Interface and IpInterface string properties
+        // Read the Interface and IpInterface string properties
 
         qDebug() << "Read Multiple string properties";
 

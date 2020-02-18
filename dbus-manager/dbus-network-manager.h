@@ -38,7 +38,7 @@ public:
 
 public slots:
     void deviceStateChanged(unsigned int newState, unsigned int reason, unsigned int oldState);
-
+    void deviceStateChanged(unsigned int newState);
 };
 
 #endif // DBUSNETWORKMANAGER_H
