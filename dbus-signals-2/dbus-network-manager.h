@@ -1,4 +1,4 @@
-#ifndef DBUSNETWORKMANAGER_H
+﻿#ifndef DBUSNETWORKMANAGER_H
 #define DBUSNETWORKMANAGER_H
 
 #include <QtCore/QtCore>
@@ -35,10 +35,14 @@ public:
     bool getDeviceProperty(QString& path, QString& propertyName, QString& response);
     bool getDeviceProperty(QString& path, QStringList& propertyNameList, int *responseList);
     bool getDeviceProperty(QString& path, QString& propertyName, int& response);
+    void networkManagerMain(void);
 
 public slots:
     void deviceStateChanged(unsigned int newState, unsigned int reason, unsigned int oldState);
     void deviceStateChanged(unsigned int newState);
+private slots:
+    // slot for "device added"
+    void deviceStateChanged(const QDBusObjectPath &in);
 };
 
 #endif // DBUSNETWORKMANAGER_H

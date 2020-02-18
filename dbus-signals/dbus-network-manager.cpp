@@ -131,8 +131,7 @@ void networkManagerMain(void) {
         numDevices = (size_t)networkDeviceList.count();
 
         for (size_t counter = 0; counter < numDevices; counter++) {
-            //nmObject.displayDebugMessage(networkDeviceList.at(counter));
-            result = nmObject.getDeviceProperty((QString &)networkDeviceList.at(counter),
+                result = nmObject.getDeviceProperty((QString &)networkDeviceList.at(counter),
                                                 propertyNameList,
                                                 deviceTypeResponseList);
 

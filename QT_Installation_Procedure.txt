@@ -1,0 +1,90 @@
+
+sudo apt-get install build-essential
+
+sudo apt-get install qtcreator
+
+sudo apt-get install qt5-default
+
+sudo apt-get install qt5-doc
+
+sudo apt-get install qt5-doc-html qtbase5-doc-html
+
+sudo apt-get install qtbase5-examples
+
+sudo apt-get install qtdeclarative5-dev 
+
+
+TIPS:
+1. If code changes do not reflect in the build, retry qmake
+   Right click on the project, and click 'Run qmake' or
+   Build --> Run qmake
+
+2.qrc:/main.qml:1 module "QtQuick" version 2.9 is not installed
+
+╭-------┬---------┬----------------------------┬-------------------╮-----------------|
+|       |         | QtQuick.Controls,          |                   | QtQuick.window  |
+|       |         | QtQuick.Controls.Material, |                   |                 |
+|  Qt   | QtQuick | QtQuick.Controls.Universal,| Qt.labs.calendar, |                 |
+|       |         | QtQuick.Templates          | Qt.labs.platform  |                 |
+|       |         |                            |                   |                 |
+├-------┼---------┼----------------------------┼-------------------┤-----------------|
+| 5.5.1 |   2.5   |                            |                   |   2.2           |
+| 5.7   |   2.7   |          2.0               |        1.0        |                 |
+| 5.8   |   2.8   |          2.1               |        1.0        |                 |
+| 5.9   |   2.9   |          2.2               |        1.0        |                 |
+| 5.10  |   2.10  |          2.3               |        1.0        |                 |
+| 5.11  |   2.11  |          2.4               |        1.0        |                 |
+| 5.12  |   2.12  |          2.12              |        1.0        |                 |
+╰-------┴---------┴----------------------------┴-------------------╯-----------------|            
+
+
+---------------------------------------------------------------
+
+Add the PPA
+
+sudo add-apt-repository ppa:beineri/opt-qt-5.11.1-xenial
+sudo apt update
+
+Package List:
+qt511-meta-minimal - Minimal core pacakges
+qt511-meta-full - The full stack (without *-no-gpl packages)
+qt511-meta-dbg-full - Dbg packages (only for x64, not for all modules)
+qt511creator - Qt Creator
+
+
+Install Qt
+sudo apt install qt511-meta-full
+sudo apt install qt511creator
+sudo apt-get install build-essential libgl1-mesa-dev  --> these are reqd for libGL etc
+Refer:
+https://forum.qt.io/topic/91484/usr-bin-ld-cannot-find-lgl-impossible-to-compile-a-qt-project/5
+https://doc.qt.io/qt-5/linux.html
+
+Configure the System
+
+There are a couple of choices here depending on whether you want to configure the use of the new Qt version system wide or to the current user.
+
+For system wide, create the following file in location /etc/xdg/qtchooser/opt-qt511.conf
+For the current user, create the following file in location ~/.config/qtchooser/default.conf
+
+with the following contents:
+
+/opt/qt511/bin
+/opt/qt511/lib
+
+The first line in the file is the path to the Qt binaries and the second is the path to the Qt libraries.
+
+Check the Configuration
+
+qmake -v
+
+If the configuration is working correctly you should see something like:
+
+QMake version 3.1
+Using Qt version 5.11.1 in /opt/qt511/lib
+
+
+
+
+../../build/qt5/%{JS: Util.asciify("%{CurrentProject:Name}")}/%{JS: Util.asciify("%{CurrentKit:FileSystemName}-%{CurrentBuild:Name}")}
+
